@@ -8,11 +8,16 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import styled from 'styled-components';
-const Container = styled.div`
+import ThemeToggle from './components/ThemeToggle';
 
-padding: 10px;
-`;
+const App = () => {
+  return (
+    <ThemeProvider>
+      <ThemedApp />
+    </ThemeProvider>
+  );
+};
+
 const ThemedApp = () => {
   const { theme } = useTheme();
 
@@ -21,23 +26,15 @@ const ThemedApp = () => {
       <GlobalStyles />
       <Router>
         <Header />
-        <Container>
+        <ThemeToggle />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
         </Routes>
-       </Container> <Footer />
+        <Footer />
       </Router>
     </StyledThemeProvider>
-  );
-};
-
-const App = () => {
-  return (
-    <ThemeProvider>
-      <ThemedApp />
-    </ThemeProvider>
   );
 };
 
