@@ -1,13 +1,16 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { Banner } from '../components/Banner';
-
+import { MyCardContainer } from '../components/MyCardContainer';
 const Home = () => (
   <div>
     {/* <h1>Welcome to My Portfolio</h1>
     <p>Innovative web developer with 2+ years of experience in creating user-centric websites and applications.</p>
     <h2>Projects</h2> */}
+
     <Banner></Banner>
+    <MyCardContainer/>
+
     <ProjectCard 
       title="Reporting System Website" 
       description="Developed a website to track Google keyword rankings and website backlinks, generating and emailing PDF reports to users."
