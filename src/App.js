@@ -9,9 +9,18 @@ import Projects from './pages/Projects';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import styled from 'styled-components';
+import "./components/style.css";
 const Container = styled.div`
+  padding:10px;
 
-padding: 10px;
+@media (max-width: 768px) {
+
+}
+@media (max-width: 992px) {
+
+}
+@media (max-width: 1200px) {
+  }
 `;
 const ThemedApp = () => {
   const { theme } = useTheme();
