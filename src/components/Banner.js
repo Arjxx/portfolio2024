@@ -4,7 +4,6 @@ import { useTheme } from "../ThemeContext";
 
 const BannerWrapper = styled.div`
   display: grid;
-  place-items: center;
   height: auto;
   background-color: ${({ theme }) => (theme === "light" ? "white" : "#282c34")};
   color: ${({ theme }) => (theme === "light" ? "#000" : "white")};
