@@ -1,64 +1,79 @@
 import React from 'react'
+import styled from 'styled-components'
 
+// Styled Components
+const Container = styled.div`
+`;
+
+const Box = styled.div`
+  position: relative;
+  height: 500vh;  /* Ensure the Box has enough height to allow for scrolling */
+`;
+
+
+const BoxContainer = styled.div`
+
+  position: relative;
+  top: 80vh;
+  
+
+`;
+
+const InnerBox = styled.div`
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  display: flex;
+  justify-content: center;
+  color: white;
+  align-items: center;
+  font-size: 3rem;
+  z-index: 0;  /* Optional: Ensure it stays on top */
+`;
+
+const Box1 = styled.div`
+  position: absolute;
+  width: 30%;
+  height: 350px;
+  background: pink;
+  top: 600px;
+  left: 50px;
+`;
+
+const Box2 = styled.div`
+  position: absolute;
+ width: 30%;
+  height: 350px;
+  background: yellow;
+  top: 200px;
+  right: 50px;
+`;
+
+const Box3 = styled.div`
+  position: absolute;
+ width: 30%;
+   height: 350px;
+  background: white;
+  top: 900px;
+  right: 50px;
+`;
+
+// React Component
 export const Slidingdiv = () => {
   return (
-    <div class="container">
-  
-    </div>
-    <div class="container box">
-      <div class="inner-box">Incredible hulk</div>
-      <div class="box1"></div>
-        <div class="box2"></div>
-      <div class="box3"></div>
-    
-    
-    </div>
-      
-      <style>.container{
-      height:500vh;
-    }
-    
-    .box{
-        position:relative;
-    
-    }
-    .inner-box{
-      position: sticky;
-      top:0;
-      width:100%;
-      height:500px;
-      background:black;
-      display:flex;
-      justify-content:center;
-      color:white;
-      align-items:center;
-      font-size: 3rem
-    }
-    
-    .box1{
-      position:absolute;
-      width: 300px;
-      height: 200px;
-      background: pink;
-      top:600px
-      left:50px;
-    }
-    
-    .box2{
-      position:absolute;
-      width: 300px;
-      height: 200px;
-      background: green;
-      top:200px;
-      right:50px;
-    }
-    .box3{
-      position:absolute;
-      width: 300px;
-      height: 200px;
-      background: white;
-      top:900px;
-      right:50px;
-    }</style>
-  )
+    <>
+      <Container>
+        <Box>
+          <InnerBox>Incredible Hulk</InnerBox>
+          <BoxContainer>
+            <Box1 />
+            <Box2 />
+            <Box3 />
+            </BoxContainer>
+        </Box>
+      </Container>
+    </>
+  );
 }

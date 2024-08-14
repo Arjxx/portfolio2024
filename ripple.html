@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Text Effects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .effect-container {
+            margin-bottom: 100px;
+            text-align: center;
+        }
+        .effect-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        /* Glitch Effect */
+        .glitch {
+            position: relative;
+            font-size: 3rem;
+            color: white;
+            background: black;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            overflow: hidden;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            animation: glitch-before 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            animation: glitch-after 2s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-before {
+            0% {
+                clip: rect(0, 900px, 0, 0);
+            }
+            25% {
+                clip: rect(42px, 900px, 56px, 0);
+            }
+            50% {
+                clip: rect(84px, 900px, 90px, 0);
+            }
+            75% {
+                clip: rect(24px, 900px, 60px, 0);
+            }
+            100% {
+                clip: rect(0, 900px, 0, 0);
+            }
+        }
+
+        @keyframes glitch-after {
+            0% {
+                clip: rect(0, 900px, 0, 0);
+            }
+            25% {
+                clip: rect(72px, 900px, 86px, 0);
+            }
+            50% {
+                clip: rect(14px, 900px, 20px, 0);
+            }
+            75% {
+                clip: rect(32px, 900px, 46px, 0);
+            }
+            100% {
+                clip: rect(0, 900px, 0, 0);
+            }
+        }
+
+        /* Neon Glow Effect */
+        .neon-text {
+            font-size: 4rem;
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 50px #0ff, 0 0 60px #0ff;
+            animation: neon-glow 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            from {
+                text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 50px #0ff, 0 0 60px #0ff, 0 0 70px #0ff;
+            }
+            to {
+                text-shadow: 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #0ff, 0 0 50px #0ff, 0 0 60px #0ff, 0 0 70px #0ff, 0 0 80px #0ff;
+            }
+        }
+
+        /* Text Flip Animation */
+        .flip-text {
+            font-size: 4rem;
+            display: inline-block;
+            perspective: 1000px;
+        }
+
+        .flip-text span {
+            display: inline-block;
+            transition: transform 0.5s;
+            transform-origin: bottom;
+            transform: rotateX(0deg);
+        }
+
+        .flip-text:hover span {
+            transform: rotateX(180deg);
+        }
+
+        /* Wavy Text Animation */
+        .wave-text {
+            display: inline-block;
+            font-size: 4rem;
+        }
+
+        .wave-text span {
+            display: inline-block;
+            animation: wave-animation 1.5s ease-in-out infinite;
+            animation-delay: calc(0.1s * var(--i));
+        }
+
+        @keyframes wave-animation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Typing Text Animation */
+        .typing-text {
+            font-size: 2rem;
+            font-family: monospace;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid;
+            animation: typing 4s steps(22), blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: black }
+        }
+
+        /* Text Stroke Effect */
+        .stroke-text {
+            font-size: 4rem;
+            color: transparent;
+            -webkit-text-stroke: 2px #000;
+            text-transform: uppercase;
+        }
+
+        /* Expanding Text Shadow on Hover */
+        .expand-shadow-text {
+            font-size: 4rem;
+            color: #000;
+            transition: text-shadow 0.3s ease-in-out;
+        }
+
+        .expand-shadow-text:hover {
+            text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bounce Text on Hover */
+        .bounce-text {
+            font-size: 4rem;
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .bounce-text:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Text Morphing Effect */
+        .morph-text {
+            font-size: 3rem;
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Text Highlight on Scroll */
+        .highlight-text {
+            font-size: 2rem;
+            margin: 100px 0;
+            transition: color 0.5s, background-color 0.5s;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .highlight-text.highlight {
+            color: white;
+            background-color: #ff005e;
+        }
+
+        /* Parallax Text Effect */
+        .parallax-text {
+            font-size: 5rem;
+            font-weight: bold;
+            position: relative;
+            transform: translateZ(0);
+            transition: transform 0.2s ease-out;
+        }
+
+        .parallax-container {
+            height: 200vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Text Reveal with Scroll */
+        .reveal-container {
+            height: 200vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reveal-text {
+            font-size: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal-text.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Flicker Text Effect */
+        .flicker-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ff005e;
+            animation: flicker-animation 1.5s infinite;
+        }
+
+        @keyframes flicker-animation {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.4;
+            }
+            22% {
+                opacity: 0.1;
+            }
+        }
+
+        /* Text Blur and Unblur on Hover */
+        .blur-text {
+            font-size: 4rem;
+            transition: filter 0.3s ease;
+            filter: blur(4px);
+        }
+
+        .blur-text:hover {
+            filter: blur(0);
+        }
+
+        /* Text Ripple Effect with SVG */
+        .ripple-svg-text {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #ff005e;
+            filter: url(#ripple);
+            display: inline-block;
+        }
+
+        @keyframes ripple {
+            0% {
+                filter: url(#ripple);
+            }
+            100% {
+                filter: url(#ripple);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="effect-container">
+        <div class="effect-title">Glitch Effect</div>
+        <div class="glitch" data-text="Hover Over Me">Hover Over Me</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Neon Glow Effect</div>
+        <div class="neon-text">Neon Glow</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Flip Animation</div>
+        <div class="flip-text"><span>Flip Me</span></div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Wavy Text Animation</div>
+        <div class="wave-text">
+            <span style="--i:1">W</span>
+            <span style="--i:2">a</span>
+            <span style="--i:3">v</span>
+            <span style="--i:4">e</span>
+            <span style="--i:5">T</span>
+            <span style="--i:6">e</span>
+            <span style="--i:7">x</span>
+            <span style="--i:8">t</span>
+        </div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Typing Text Animation</div>
+        <div class="typing-text">Typing effect in action...</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Stroke Effect</div>
+        <div class="stroke-text">Stroke Effect</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Expanding Text Shadow on Hover</div>
+        <div class="expand-shadow-text">Hover Me</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Bounce Text on Hover</div>
+        <div class="bounce-text">Bounce</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Morphing Effect</div>
+        <div class="morph-text" id="morphText">Hello, World!</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Highlight on Scroll</div>
+        <div class="highlight-text">Scroll down to see the magic!</div>
+        <div class="highlight-text">More magic happening here!</div>
+        <div class="highlight-text">Keep scrolling for more highlights!</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Parallax Text Effect</div>
+        <div class="parallax-container">
+            <div class="parallax-text">Parallax Effect</div>
+        </div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Reveal with Scroll</div>
+        <div class="reveal-container">
+            <div class="reveal-text">Reveal Me on Scroll</div>
+        </div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Flicker Text Effect</div>
+        <div class="flicker-text">Flicker Effect</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Blur and Unblur on Hover</div>
+        <div class="blur-text">Hover to Unblur</div>
+    </div>
+
+    <div class="effect-container">
+        <div class="effect-title">Text Ripple Effect with SVG</div>
+        <div class="ripple-svg-text">Ripple Effect</div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <filter id="ripple">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+                    <feColorMatrix
+                        in="blur"
+                        mode="matrix"
+                        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 15 -5"
+                        result="ripple"
+                    />
+                    <feBlend in="SourceGraphic" in2="ripple" mode="normal"/>
+                </filter>
+            </defs>
+        </svg>
+    </div>
+
+    <script>
+        /* Text Morphing Effect */
+        const phrases = ["Hello, World!", "Welcome to My Site", "Enjoy Your Stay", "Let's Get Started!"];
+        let currentPhraseIndex = 0;
+
+        function morphText() {
+            const morphTextElement = document.getElementById('morphText');
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            morphTextElement.style.opacity = 0;
+
+            setTimeout(() => {
+                morphTextElement.textContent = phrases[currentPhraseIndex];
+                morphTextElement.style.opacity = 1;
+            }, 500);
+        }
+
+        setInterval(morphText, 3000);
+
+        /* Text Highlight on Scroll */
+        const texts = document.querySelectorAll('.highlight-text');
+
+        window.addEventListener('scroll', () => {
+            texts.forEach(text => {
+                const rect = text.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    text.classList.add('highlight');
+                } else {
+                    text.classList.remove('highlight');
+                }
+            });
+        });
+
+        /* Parallax Text Effect */
+        const parallaxText = document.querySelector('.parallax-text');
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.pageYOffset;
+            parallaxText.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+        });
+
+        /* Text Reveal with Scroll */
+        const revealText = document.querySelector('.reveal-text');
+        const revealContainer = document.querySelector('.reveal-container');
+
+        window.addEventListener('scroll', () => {
+            const revealRect = revealContainer.getBoundingClientRect();
+            if (revealRect.top <= window.innerHeight) {
+                revealText.classList.add('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
