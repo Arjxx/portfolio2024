@@ -18,6 +18,7 @@ const CardContainer = styled.div`
 
   @media (min-width: 1350px) {
     grid-template-columns: 300px 300px 300px 300px;
+
   }
 `;
 

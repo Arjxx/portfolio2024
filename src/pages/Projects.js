@@ -1,8 +1,9 @@
 import React from 'react';
 import ProjectCard from '../components/ProjectCard';
-
+import Scroll from '../events/Scroll';
 const Projects = () => (
   <div>
+    <Scroll/>
     <h1>My Projects</h1>
     <ProjectCard 
       title="Reporting System Website" 

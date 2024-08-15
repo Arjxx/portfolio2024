@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import styled from 'styled-components';
 import "./components/style.css";
 const Container = styled.div`
-  padding:10px;
+  padding:0px;
 
 @media (max-width: 768px) {
 

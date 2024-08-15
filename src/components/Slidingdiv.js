@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import TextSlider from './SlidingText';
 // Styled Components
 const Container = styled.div`
 `;
@@ -66,7 +66,11 @@ export const Slidingdiv = () => {
     <>
       <Container>
         <Box>
-          <InnerBox>Incredible Hulk</InnerBox>
+          <InnerBox>
+<TextSlider/>
+
+
+          </InnerBox>
           <BoxContainer>
             <Box1 />
             <Box2 />
