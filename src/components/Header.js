@@ -10,6 +10,9 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position:fixed;
+  z-index:999;
+  width:100%;
 `;
 
 const NavLink = styled(Link)`

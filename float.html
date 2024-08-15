@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating in Space Animation</title>
+</head>
+<body>
+    <div class="space">
+        <div class="floating-object"></div>
+    </div>
+  <style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #000; /* Black background to simulate space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.space {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.floating-object {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db; /* Blue color for the object */
+    border-radius: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: floatAndRotate 15s ease-in-out infinite;
+}
+
+@keyframes floatAndRotate {
+    0%, 100% {
+        transform: translate(-50%, -50%) translateY(-20px) rotate(0deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(20px) rotate(180deg);
+    }
+}
+</style>
+</body>
+</html>

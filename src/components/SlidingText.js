@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled, { css } from "styled-components";
 
 const SliderContainer = styled.div`
-  width: 400px;
+  width: auto;
   height: 70px;
   overflow: hidden;
   position: relative;
   text-align: center;
   margin: 10px 0;
 `;
-
+const Info = styled.div`
+  width: 100%;
+  text-align:center;
+  line-height:5px;
+`;
 const Slide = styled.div`
   position: absolute;
   width: 100%;
@@ -26,7 +30,7 @@ const Slide = styled.div`
     `}
 `;
 
-const slidesData = ['First Slide', 'Second Slide', 'Third Slide'];
+const slidesData = ["Developer", "Designer", "Programmer"];
 
 const TextSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -40,14 +44,21 @@ const TextSlider = () => {
   }, []);
 
   return (
-    <SliderContainer>
-      {slidesData.map((slide, index) => (
-        <Slide key={index} isActive={index === currentSlide}>
-          {slide}
-        </Slide>
-        
-      ))}
-    </SliderContainer>
+    <div>
+      <Info>
+        <p>Hi</p>
+        <p>I am Arjun Suresh,</p>
+        <p> and I am a</p>
+      </Info>
+
+      <SliderContainer>
+        {slidesData.map((slide, index) => (
+          <Slide key={index} isActive={index === currentSlide}>
+            {slide}
+          </Slide>
+        ))}
+      </SliderContainer>
+    </div>
   );
 };
 
